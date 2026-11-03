@@ -29,9 +29,10 @@ public class User
      */
     public void display()
     {
-        System.out.println("[" + stID + "]" + name);
+        System.out.println("학번 : " + stID);
+        System.out.println("이름 : " + name);
     }
-
+    
     /**
      * check - 이용자의 대출 가능여부 확인하는 메소드
      *
