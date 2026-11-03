@@ -1,33 +1,53 @@
 
 /**
- * Book 클래스의 설명을 작성하세요.
+ * Book 책에 대한 클래스
  *
- * @author (작성자 이름)
- * @version (버전 번호 또는 작성한 날짜)
+ * @author (2023320018_김현중)
+ * @version (2026.11.03)
  */
 public class Book
 {
-    // 인스턴스 변수 - 다음의 예제를 사용자에 맞게 변경하세요.
-    private int x;
+    private String title;
+    private String author;
+    private String bookID;
 
     /**
-     * Book 클래스의 객체 생성자
+     * Book - 클래스의 객체 생성자
+     *
+     * @param  title 제목
+     * @param  author 저자
+     * @param  bookID 책 등록번호
+     * @return    x 와 y의 합
      */
-    public Book()
+    public Book(String title, String author, String bookID)
     {
-        // 인스턴스 변수 초기화
-        x = 0;
+        this.title = title;
+        this.author = author;
+        this.bookID = bookID;
     }
 
     /**
-     * 예제 메소드 - 이 주석을 사용자에 맞게 바꾸십시오
+     * display - 책 정보를 화면에 출력하는 메소드
      *
-     * @param  y  메소드의 샘플 파라미터
-     * @return    x 더하기 y의 결과값을 반환
      */
-    public int sampleMethod(int y)
+    public void display()
     {
-        // 여기에 코드를 작성하세요.
-        return x + y;
+        System.out.println("책 제목: " + title);
+        System.out.println("저자 : " + author);
+        System.out.println("책 ID: " + bookID);
+    }
+
+    /**
+     * check - 책 정보가 null인지 확인하는 메소드
+     *
+     * @return 책 정보가 모두 null이 아니며 true,
+     *         하나라도 null이면 false
+     */
+    public Boolean check()
+    {
+        if(title != null && author != null && bookID != null){
+            return true;
+        }
+        return false;
     }
 }
