@@ -3,7 +3,7 @@ import java.time.*;
 /**
  * Loan 대출에 대한 클래스
  *
- * @author (작성자 이름)
+ * @author (2023320035 윤효준)
  * @version (2026.11.03)
  */
 public class Loan
