@@ -1,7 +1,7 @@
 import java.util.*;
 
 /**
- * UserDB 클래스의 설명을 작성하세요.
+ * UserDB 도서관 이용자 데이터베이스 관리하는 클래스
  *
  * @author (2023320023 이현회)
  * @version (2026.11.03)
@@ -19,10 +19,10 @@ public class UserDB
     }
 
     /**
-     * 예제 메소드 - 이 주석을 사용자에 맞게 바꾸십시오
+     * search - 학번으로 등록된 이용자를 검색하는 메소드
      *
-     * @param  y  메소드의 샘플 파라미터
-     * @return    x 더하기 y의 결과값을 반환
+     * @param  stID  이용자의 학번
+     * @return    동일한 학번 존재 시 user 반환, 없을 시 null 반환
      */
     public User search(String stID)
     {
@@ -35,10 +35,11 @@ public class UserDB
     }
 
     /**
-     * 메소드 예제 - 사용자에 맞게 주석을 바꾸십시오.
+     * searchSameUser - 학번과 이름이 동일한 이용자가 있는지 검색하는 메소드
      *
-     * @param  y  메소드의 샘플 파라미터
-     * @return    x 와 y의 합
+     * @param  stID  이용자의 학번
+     * @param  name  이용자의 이름
+     * @return    동일한 학번과 이름이 존재하면 user 반환, 없을 시 null 반환
      */
     public User searchSameUser(String stID, String name)
     {
@@ -51,10 +52,9 @@ public class UserDB
     }
 
     /**
-     * 메소드 예제 - 사용자에 맞게 주석을 바꾸십시오.
+     * save - 이용자 객체를 이용자DB에 저장하는 메소드
      *
-     * @param  y  메소드의 샘플 파라미터
-     * @return    x 와 y의 합
+     * @param  user  이용자 객체
      */
     public void save(User user)
     {

@@ -1,6 +1,6 @@
 
 /**
- * User 클래스의 설명을 작성하세요.
+ * User 도서관 이용자의 정보를 관리하는 클래스
  *
  * @author (2023320023 이현회)
  * @version (2026.11.03)
@@ -13,6 +13,9 @@ public class User
 
     /**
      * User 클래스의 객체 생성자
+     * 
+     * @param stID  이용자 학번
+     * @param name  이용자 이름
      */
     public User(String stID, String name)
     {
@@ -22,10 +25,7 @@ public class User
     }
 
     /**
-     * 예제 메소드 - 이 주석을 사용자에 맞게 바꾸십시오
-     *
-     * @param  y  메소드의 샘플 파라미터
-     * @return    x 더하기 y의 결과값을 반환
+     * display - 이용자 학번과 이름 출력하는 메소드
      */
     public void display()
     {
@@ -33,10 +33,9 @@ public class User
     }
 
     /**
-     * 메소드 예제 - 사용자에 맞게 주석을 바꾸십시오.
+     * check - 이용자의 대출 가능여부 확인하는 메소드
      *
-     * @param  y  메소드의 샘플 파라미터
-     * @return    x 와 y의 합
+     * @return    대출 권수가 3권 미만이면 true, 3권 이상이면 false
      */
     public boolean check()
     {
@@ -45,10 +44,9 @@ public class User
     }
 
     /**
-     * 메소드 예제 - 사용자에 맞게 주석을 바꾸십시오.
+     * getLoanCount - 이용자의 현재 대출 권수 반환하는 메소드
      *
-     * @param  y  메소드의 샘플 파라미터
-     * @return    x 와 y의 합
+     * @return    현재 대출 권수
      */
     public int getLoanCount()
     {
@@ -56,10 +54,7 @@ public class User
     }
 
     /**
-     * 메소드 예제 - 사용자에 맞게 주석을 바꾸십시오.
-     *
-     * @param  y  메소드의 샘플 파라미터
-     * @return    x 와 y의 합
+     * increaseLoanCount - 대출 권수를 1 증가시키는 메소드
      */
     public void increaseLoanCount()
     {
@@ -67,10 +62,7 @@ public class User
     }
 
     /**
-     * 메소드 예제 - 사용자에 맞게 주석을 바꾸십시오.
-     *
-     * @param  y  메소드의 샘플 파라미터
-     * @return    x 와 y의 합
+     * decreaseLoanCount - 대출 권수를 1 감소시키는 메소드
      */
     public void decreaseLoanCount()
     {
@@ -78,10 +70,9 @@ public class User
     }
 
     /**
-     * 메소드 예제 - 사용자에 맞게 주석을 바꾸십시오.
+     * getstID - 이용자의 학번을 반환하는 메소드
      *
-     * @param  y  메소드의 샘플 파라미터
-     * @return    x 와 y의 합
+     * @return    이용자의 학번
      */
     public String getstID()
     {
@@ -89,10 +80,9 @@ public class User
     }
 
     /**
-     * 메소드 예제 - 사용자에 맞게 주석을 바꾸십시오.
+     * getname - 이용자의 이름을 반환하는 메소드
      *
-     * @param  y  메소드의 샘플 파라미터
-     * @return    x 와 y의 합
+     * @return    이용자의 이름
      */
     public String getname()
     {
