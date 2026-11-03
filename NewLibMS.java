@@ -1,33 +1,106 @@
-
 /**
- * NewLibMS 클래스의 설명을 작성하세요.
- *
- * @author (작성자 이름)
- * @version (버전 번호 또는 작성한 날짜)
+ * NewLibMS 도서관 관리 시스템의 메인 제어 클래스
+ * 이용자, 도서, 대출 데이터베이스를 통합하여 도서관의 주요 기능(대출 등)을 수행합니다.
  */
-public class NewLibMS
-{
-    // 인스턴스 변수 - 다음의 예제를 사용자에 맞게 변경하세요.
-    private int x;
+public class NewLibMS {
+    private String name;
+    private UserDB userDB;
+    private BookDB bookDB;
+    private LoanDB loanDB;
 
     /**
-     * NewLibMS 클래스의 객체 생성자
+     * NewLibMS 객체 생성자
+     * 시스템 시작 시 각 데이터베이스를 초기화합니다.
      */
-    public NewLibMS()
-    {
-        // 인스턴스 변수 초기화
-        x = 0;
+    public NewLibMS() {
+        this.name = "NewLibMS System"; 
+        this.userDB = new UserDB();
+        this.bookDB = new BookDB(); 
+        this.loanDB = new LoanDB();
     }
 
     /**
-     * 예제 메소드 - 이 주석을 사용자에 맞게 바꾸십시오
-     *
-     * @param  y  메소드의 샘플 파라미터
-     * @return    x 더하기 y의 결과값을 반환
+     * 신규 이용자 등록 기능
+     * 
+     * @param stID 학번
+     * @param name 이름
      */
-    public int sampleMethod(int y)
-    {
-        // 여기에 코드를 작성하세요.
-        return x + y;
+    public void registerUser(String stID, String name) {
+        if (userDB.search(stID) != null) {
+            System.out.println("이미 등록된 학번입니다.");
+            return;
+        }
+        
+        User newUser = new User(stID, name);
+        userDB.save(newUser);
+        System.out.println(name + " 이용자가 성공적으로 등록되었습니다.");
+    }
+    
+    /**
+     * 도서 등록 기능
+     * 
+     * @param title 책 제목
+     * @param author 저자
+     * @param bookID 책 등록번호
+     */
+    public void registerBook(String title, String author, String bookID) {
+        if (bookDB.search(bookID) != null) {
+            System.out.println("이미 등록된 도서 번호입니다.");
+            return;
+        }
+        Book newBook = new Book(title, author, bookID);
+        bookDB.save(newBook);
+        System.out.println("도서 '" + title + "' 등록이 완료되었습니다.");
+    }
+
+    /**
+     * 도서 대출 기능
+     * 
+     * @param stID 이용자 학번
+     * @param bookID 대출할 도서 번호
+     */
+    public void borrowBook(String stID, String bookID) {
+        User user = userDB.search(stID);
+        Book book = bookDB.search(bookID);
+
+        if (user == null) {
+            System.out.println("등록되지 않은 이용자입니다.");
+            return;
+        }
+        if (book == null) {
+            System.out.println("존재하지 않는 도서입니다.");
+            return;
+        }
+
+        if (!user.check()) {
+            System.out.println("최대 대출 권수(3권)를 초과하여 대출할 수 없습니다.");
+            return;
+        }
+        if (!book.check()) {
+            System.out.println("이미 대출 중인 도서입니다.");
+            return;
+        }
+
+        book.borrow();
+        user.increaseLoanCount();
+        
+        Loan newLoan = new Loan(user, book);
+        loanDB.save(newLoan);
+
+        System.out.println(user.getname() + "님, 도서 대출이 최종 완료되었습니다.");
+    }
+
+    /**
+     * 대출 정보 파일 출력 기능
+     * 
+     * @param loan 대출 객체
+     */
+    public void printFile(Loan loan) {
+        if (loan != null) {
+            System.out.println("--- 대출 정보 파일 출력 ---");
+            loan.display();
+        } else {
+            System.out.println("출력할 대출 정보가 없습니다.");
+        }
     }
 }
