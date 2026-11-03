@@ -50,4 +50,35 @@ public class Book
         }
         return false;
     }
+
+    /**
+     * getTitle - 책 제목을 반환하는 메소드
+     *
+     *@return 책 제목
+     */
+    public String getTitle()
+    {
+        return title;
+    }
+
+    /**
+     * getAuthor - 저자를 반환하는 메소드
+     *
+     * @return 저자
+     */
+    public String getAuthor()
+    {
+        return author;
+    }
+
+    /**
+     * getBookID - 책 등록번호를 반환하는 메소드
+     *
+     * @return 책 등록번호
+     */
+    public String getBookID()
+    {
+        return bookID;
+    }
+
 }
