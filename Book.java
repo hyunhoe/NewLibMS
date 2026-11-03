@@ -10,6 +10,7 @@ public class Book
     private String title;
     private String author;
     private String bookID;
+    private boolean available;
 
     /**
      * Book - 클래스의 객체 생성자
@@ -24,6 +25,7 @@ public class Book
         this.title = title;
         this.author = author;
         this.bookID = bookID;
+        available = true;
     }
 
     /**
@@ -38,17 +40,29 @@ public class Book
     }
 
     /**
-     * check - 책 정보가 null인지 확인하는 메소드
+     * check - 책의 대출 가능 여부를 확인하는 메소드
      *
-     * @return 책 정보가 모두 null이 아니며 true,
-     *         하나라도 null이면 false
+     * @return 대출 가능하면 true, 대출 중이면 false
+     * 
      */
     public Boolean check()
     {
-        if(title != null && author != null && bookID != null){
-            return true;
+        return available;
+    }
+
+    /**
+     * borrow - 책을 대출하는 메소드
+     *
+     */
+    public void borrow()
+    {
+        if(available){
+            available = false;
+            System.out.println("대출 완료");
         }
-        return false;
+        else{
+            System.out.println("이미 대출 중인 책입니다.");
+        }
     }
 
     /**
