@@ -1,6 +1,9 @@
+import java.util.*;
 /**
  * NewLibMS 도서관 관리 시스템의 메인 제어 클래스
  * 이용자, 도서, 대출 데이터베이스를 통합하여 도서관의 주요 기능(대출 등)을 수행합니다.
+ * @author (2023320026_손상우)
+ * @version (2026.11.04)
  */
 public class NewLibMS {
     private String name;
