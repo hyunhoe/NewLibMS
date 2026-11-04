@@ -104,7 +104,7 @@ public class NewLibMS {
             book.linkLoan(newLoan);
             
             
-            System.out.println("\n시스템 모니터 화면: [대출 정보 확인]");
+            System.out.println("\n[시스템 모니터 화면: 대출 정보 확인]");
             newLoan.display();
             
             
@@ -116,8 +116,8 @@ public class NewLibMS {
             
             
             int remainCount = 3 - loanDB.getLoanCount(stID);
-            System.out.println(user.getName() + "님, 도서 대출이 최종 완료되었습니다.");
-            System.out.println("현재 남은 대여 가능 권수는 " + remainCount + "권입니다.");
+            System.out.println(user.getName() + "님, 대출이 완료되었습니다.");
+            System.out.println("현재 남은 대출 가능 권수는 " + remainCount + "권입니다.");
         }
     }
 
@@ -125,6 +125,7 @@ public class NewLibMS {
      * 대출 정보 파일 출력 기능
      * 
      * @param loan 대출 객체
+     * @param stID 학번
      */
     public void printFile(Loan loan, String stID) {
         if (loan != null) {

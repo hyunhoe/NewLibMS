@@ -34,7 +34,8 @@ public class User
     /**
      * check - 이용자의 대출 가능여부 확인하는 메소드
      *
-     * @return    대출 권수가 3권 미만이면 true, 3권 이상이면 false
+     * @param loanCount 대출 건수
+     * @return 대출 건수가 3건 미만이면 true, 3건 이상이면 false
      */
     public boolean check(int loanCount)
     {
@@ -43,7 +44,7 @@ public class User
     }
 
     /**
-     * getstID - 이용자의 학번을 반환하는 메소드
+     * getStID - 이용자의 학번을 반환하는 메소드
      *
      * @return    이용자의 학번
      */
@@ -53,7 +54,7 @@ public class User
     }
 
     /**
-     * getname - 이용자의 이름을 반환하는 메소드
+     * getName - 이용자의 이름을 반환하는 메소드
      *
      * @return    이용자의 이름
      */

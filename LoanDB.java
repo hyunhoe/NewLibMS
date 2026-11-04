@@ -33,7 +33,7 @@ public class LoanDB
     /**
      * 대출 건수를 리턴하는 메소드
      *
-     * @stID 학번
+     * @param stID 학번
      * @return 대출 건수
      */
     public int getLoanCount(String stID)

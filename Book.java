@@ -50,8 +50,9 @@ public class Book
     }
 
     /**
-     * linkLoan - 대출 상태를 나타내는 메소드
+     * linkLoan - 대출객체와 링크하여 대출중인 상태로 만드는 메소드
      *
+     * @param loan 대출객체
      */
     public void linkLoan(Loan loan)
     {

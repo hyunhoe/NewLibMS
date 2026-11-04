@@ -39,7 +39,7 @@ public class BookDB
      *
      * @param  title 책 제목
      * @param  author 저자
-     * @param  bookIK 책 등록번호
+     * @param  bookID 책 등록번호
      * @return  검색한 책, 없으면 null
      */
     public Book searchSameBook(String title, String author, String bookID)
