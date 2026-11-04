@@ -29,11 +29,14 @@ public class NewLibMS {
      * @param name 이름
      */
     public void registerUser(String stID, String name) {
+        if (userDB.searchSameUser(stID, name) == null){
+            System.out.println("이미 등록된 이용자입니다.");
+            return;
+        }
         if (userDB.search(stID) != null) {
             System.out.println("이미 등록된 학번입니다.");
             return;
         }
-        
         User newUser = new User(stID, name);
         userDB.save(newUser);
         System.out.println(name + " 이용자가 성공적으로 등록되었습니다.");
@@ -47,6 +50,10 @@ public class NewLibMS {
      * @param bookID 책 등록번호
      */
     public void registerBook(String title, String author, String bookID) {
+        if (bookDB.searchSameBook(title, author, bookID) == null){
+            System.out.println("이미 등록된 책입니다.");
+            return;
+        }
         if (bookDB.search(bookID) != null) {
             System.out.println("이미 등록된 도서 번호입니다.");
             return;
