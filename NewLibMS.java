@@ -17,7 +17,7 @@ public class NewLibMS {
      * 시스템 시작 시 각 데이터베이스를 초기화합니다.
      */
     public NewLibMS() {
-        this.name = "NewLibMS System"; 
+        this.name = "SM도서관"; 
         this.userDB = new UserDB();
         this.bookDB = new BookDB(); 
         this.loanDB = new LoanDB();
@@ -38,6 +38,7 @@ public class NewLibMS {
         
         User newUser = new User(stID, name);
         userDB.save(newUser);
+        newUser.display();
         System.out.println(name + " 이용자가 성공적으로 등록되었습니다.");
     }
     
@@ -57,6 +58,7 @@ public class NewLibMS {
         
         Book newBook = new Book(title, author, bookID);
         bookDB.save(newBook);
+        newBook.display();
         System.out.println("도서 '" + title + "' 등록이 완료되었습니다.");
     }
 
