@@ -10,7 +10,7 @@ public class Book
     private String title;
     private String author;
     private String bookID;
-    private boolean available;
+    private Loan linkedLoan;
 
     /**
      * Book - 클래스의 객체 생성자
@@ -25,7 +25,7 @@ public class Book
         this.title = title;
         this.author = author;
         this.bookID = bookID;
-        available = true;
+        this.linkedLoan = null;
     }
 
     /**
@@ -45,24 +45,18 @@ public class Book
      * @return 대출 가능하면 true, 대출 중이면 false
      * 
      */
-    public Boolean check()
+    public boolean check()
     {
-        return available;
+        return linkedLoan == null;
     }
 
     /**
      * borrow - 책을 대출하는 메소드
      *
      */
-    public void borrow()
+    public void linkLoan(Loan loan)
     {
-        if(available){
-            available = false;
-            System.out.println("대출 완료");
-        }
-        else{
-            System.out.println("이미 대출 중인 책입니다.");
-        }
+        this.linkedLoan = loan;
     }
 
     /**
@@ -94,5 +88,4 @@ public class Book
     {
         return bookID;
     }
-
 }

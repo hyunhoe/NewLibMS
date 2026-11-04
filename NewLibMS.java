@@ -100,11 +100,10 @@ public class NewLibMS {
             return;
         } 
         else if (resultBook == true && resultUser == true) {
-            book.borrow();
-            user.increaseLoanCount();
-            
             Loan newLoan = new Loan(user, book);
+            book.linkLoan(newLoan);
             
+            user.increaseLoanCount();
             
             System.out.println("\n시스템 모니터 화면: 대출 정보 확인]");
             newLoan.display();
