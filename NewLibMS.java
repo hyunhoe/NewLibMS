@@ -65,7 +65,16 @@ public class NewLibMS {
     public void borrowBook(String stID, String bookID) {
         User user = userDB.search(stID);
         Book book = bookDB.search(bookID);
-
+        
+        
+        if(book != null & user != null){
+            user.display();
+            book.display();
+        }
+        else{
+            System.out.println("책 또는 이용자를 찾을 수 없습니다!");
+        }
+        
         if (user == null) {
             System.out.println("등록되지 않은 이용자입니다.");
             return;
@@ -74,23 +83,29 @@ public class NewLibMS {
             System.out.println("존재하지 않는 도서입니다.");
             return;
         }
-
-        if (!user.check()) {
-            System.out.println("최대 대출 권수(3권)를 초과하여 대출할 수 없습니다.");
-            return;
-        }
-        if (!book.check()) {
-            System.out.println("이미 대출 중인 도서입니다.");
-            return;
-        }
-
-        book.borrow();
-        user.increaseLoanCount();
         
-        Loan newLoan = new Loan(user, book);
-        loanDB.save(newLoan);
-
-        System.out.println(user.getname() + "님, 도서 대출이 최종 완료되었습니다.");
+        boolean resultUser = user.check();
+        boolean resultBook = book.check();
+        
+        if (resultBook == false && resultUser == false) {
+            System.out.println("책 대출 불가능! 이용자 대출 불가능!");
+            return;
+        }
+        if (resultBook == true && resultUser == false) {
+            System.out.println("책 대출 가능! 이용자 대출 불가능!");
+            return;
+        }
+        if (resultBook == false && resultUser == true){
+            System.out.println("책 대출 불가능! 이용자 대출 가능!");
+            return;
+        }
+        if (resultBook = true && resultUser == true){
+            book.borrow();
+            user.increaseLoanCount();
+            Loan newLoan = new Loan(user, book);
+            loanDB.save(newLoan);
+            System.out.println(user.getname() + "님, 도서 대출이 최종 완료되었습니다.");
+        }
     }
 
     /**
