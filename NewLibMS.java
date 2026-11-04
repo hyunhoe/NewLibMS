@@ -35,10 +35,6 @@ public class NewLibMS {
             System.out.println("이미 동일한 정보로 등록된 회원입니다.");
             return;
         }
-        if (userDB.search(stID) != null) {
-            System.out.println("가입 실패: 해당 학번은 이미 다른 이름으로 등록되어 있습니다.");
-            return;
-        }
         
         User newUser = new User(stID, name);
         userDB.save(newUser);
@@ -56,10 +52,6 @@ public class NewLibMS {
         
         if (bookDB.searchSameBook(title, author, bookID) != null) {
             System.out.println("이미 동일한 정보로 등록된 도서입니다.");
-            return;
-        }
-        if (bookDB.search(bookID) != null) {
-            System.out.println("등록 실패: 해당 도서 번호는 이미 사용 중입니다.");
             return;
         }
         
