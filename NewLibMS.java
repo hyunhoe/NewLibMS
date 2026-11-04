@@ -1,4 +1,5 @@
 import java.util.*;
+
 /**
  * NewLibMS 도서관 관리 시스템의 메인 제어 클래스
  * 이용자, 도서, 대출 데이터베이스를 통합하여 도서관의 주요 기능(대출 등)을 수행합니다.
@@ -29,14 +30,16 @@ public class NewLibMS {
      * @param name 이름
      */
     public void registerUser(String stID, String name) {
-        if (userDB.searchSameUser(stID, name) == null){
-            System.out.println("이미 등록된 이용자입니다.");
+        
+        if (userDB.searchSameUser(stID, name) != null) {
+            System.out.println("이미 동일한 정보로 등록된 회원입니다.");
             return;
         }
         if (userDB.search(stID) != null) {
-            System.out.println("이미 등록된 학번입니다.");
+            System.out.println("가입 실패: 해당 학번은 이미 다른 이름으로 등록되어 있습니다.");
             return;
         }
+        
         User newUser = new User(stID, name);
         userDB.save(newUser);
         System.out.println(name + " 이용자가 성공적으로 등록되었습니다.");
@@ -50,14 +53,16 @@ public class NewLibMS {
      * @param bookID 책 등록번호
      */
     public void registerBook(String title, String author, String bookID) {
-        if (bookDB.searchSameBook(title, author, bookID) == null){
-            System.out.println("이미 등록된 책입니다.");
+        
+        if (bookDB.searchSameBook(title, author, bookID) != null) {
+            System.out.println("이미 동일한 정보로 등록된 도서입니다.");
             return;
         }
         if (bookDB.search(bookID) != null) {
-            System.out.println("이미 등록된 도서 번호입니다.");
+            System.out.println("등록 실패: 해당 도서 번호는 이미 사용 중입니다.");
             return;
         }
+        
         Book newBook = new Book(title, author, bookID);
         bookDB.save(newBook);
         System.out.println("도서 '" + title + "' 등록이 완료되었습니다.");
@@ -70,39 +75,45 @@ public class NewLibMS {
      * @param bookID 대출할 도서 번호
      */
     public void borrowBook(String stID, String bookID) {
-        User user = userDB.search(stID);
+        
         Book book = bookDB.search(bookID);
+        User user = userDB.search(stID);
         
         
-        if(book != null & user != null){
+        if (book != null && user != null) {
+            book.display(); 
             user.display();
-            book.display();
-        }
-        else{
-            System.out.println("책 또는 이용자를 찾을 수 없습니다!");
+        } else {
+            System.out.println("책을 찾을 수 없음! 이용자를 찾을 수 없음!");
+            return; 
         }
         
-        boolean resultUser = user.check();
         boolean resultBook = book.check();
+        boolean resultUser = user.check();
+        
         
         if (resultBook == false && resultUser == false) {
-            System.out.println("책 대출 불가능! 이용자 대출 불가능!");
+            System.out.println("책 대출불가능! & 이용자 대출불가능!");
             return;
-        }
-        if (resultBook == true && resultUser == false) {
-            System.out.println("책 대출 가능! 이용자 대출 불가능!");
+        } else if (resultBook == true && resultUser == false) {
+            System.out.println("책 대출가능! & 이용자 대출불가능!");
             return;
-        }
-        if (resultBook == false && resultUser == true){
-            System.out.println("책 대출 불가능! 이용자 대출 가능!");
+        } else if (resultBook == false && resultUser == true) {
+            System.out.println("책 대출불가능! & 이용자 대출가능!");
             return;
-        }
-        if (resultBook = true && resultUser == true){
+        } 
+        
+        else if (resultBook == true && resultUser == true) {
             book.borrow();
             user.increaseLoanCount();
+            
             Loan newLoan = new Loan(user, book);
+            
+            
+            newLoan.display();
             loanDB.save(newLoan);
-            System.out.println(user.getname() + "님, 도서 대출이 최종 완료되었습니다.");
+            
+            printFile(newLoan);
         }
     }
 
