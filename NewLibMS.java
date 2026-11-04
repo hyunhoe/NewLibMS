@@ -87,7 +87,7 @@ public class NewLibMS {
         
         
         boolean resultBook = book.check();
-        boolean resultUser = user.check();
+        boolean resultUser = user.check(loanDB.getLoanCount(stID));
         
         if (resultBook == false && resultUser == false) {
             System.out.println("책 대출불가능! & 이용자 대출불가능!");
@@ -99,25 +99,24 @@ public class NewLibMS {
             System.out.println("책 대출불가능! & 이용자 대출가능!");
             return;
         } 
-        else if (resultBook == true && resultUser == true) {
+        else{
             Loan newLoan = new Loan(user, book);
             book.linkLoan(newLoan);
             
-            user.increaseLoanCount();
             
-            System.out.println("\n시스템 모니터 화면: 대출 정보 확인]");
+            System.out.println("\n시스템 모니터 화면: [대출 정보 확인]");
             newLoan.display();
             
             
-            loanDB.save(newLoan);
+            loanDB.save(stID, newLoan);
             
             
             System.out.println("\n[실물 프린터: 대출 확인증 인쇄 중...]");
-            printFile(newLoan);
+            printFile(newLoan, stID);
             
             
-            int remainCount = 3 - user.getLoanCount();
-            System.out.println(user.getname() + "님, 도서 대출이 최종 완료되었습니다.");
+            int remainCount = 3 - loanDB.getLoanCount(stID);
+            System.out.println(user.getName() + "님, 도서 대출이 최종 완료되었습니다.");
             System.out.println("현재 남은 대여 가능 권수는 " + remainCount + "권입니다.");
         }
     }
@@ -127,10 +126,11 @@ public class NewLibMS {
      * 
      * @param loan 대출 객체
      */
-    public void printFile(Loan loan) {
+    public void printFile(Loan loan, String stID) {
         if (loan != null) {
             System.out.println("--- 대출 정보 파일 출력 (확인증) ---");
             loan.display();
+            System.out.println("대출 건수: " + loanDB.getLoanCount(stID) + " / 3");
         } else {
             System.out.println("출력할 대출 정보가 없습니다.");
         }

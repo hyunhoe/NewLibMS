@@ -27,7 +27,7 @@ public class UserDB
     public User search(String stID)
     {
         for(User user : userDB){
-            if(stID.equals(user.getstID())){
+            if(stID.equals(user.getStID())){
                 return user;
             }
         }
@@ -44,7 +44,7 @@ public class UserDB
     public User searchSameUser(String stID, String name)
     {
         for (User user : userDB){
-            if(stID.equals(user.getstID()) && name.equals(user.getname())){
+            if(stID.equals(user.getStID()) && name.equals(user.getName())){
                 return user;
             }
         }
