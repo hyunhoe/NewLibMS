@@ -75,15 +75,6 @@ public class NewLibMS {
             System.out.println("책 또는 이용자를 찾을 수 없습니다!");
         }
         
-        if (user == null) {
-            System.out.println("등록되지 않은 이용자입니다.");
-            return;
-        }
-        if (book == null) {
-            System.out.println("존재하지 않는 도서입니다.");
-            return;
-        }
-        
         boolean resultUser = user.check();
         boolean resultBook = book.check();
         
