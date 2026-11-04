@@ -35,8 +35,8 @@ public class Book
     public void display()
     {
         System.out.println("책 제목: " + title);
-        System.out.println("저자 : " + author);
-        System.out.println("책 ID: " + bookID);
+        System.out.println("저자: " + author);
+        System.out.println("등록번호: " + bookID);
     }
 
     /**

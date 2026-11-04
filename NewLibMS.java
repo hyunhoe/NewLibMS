@@ -32,7 +32,7 @@ public class NewLibMS {
     public void registerUser(String stID, String name) {
         
         if (userDB.searchSameUser(stID, name) != null) {
-            System.out.println("이미 동일한 정보로 등록된 회원입니다.");
+            System.out.println("이미 동일한 정보로 등록된 이용자입니다.");
             return;
         }
         
@@ -52,14 +52,14 @@ public class NewLibMS {
     public void registerBook(String title, String author, String bookID) {
         
         if (bookDB.searchSameBook(title, author, bookID) != null) {
-            System.out.println("이미 동일한 정보로 등록된 도서입니다.");
+            System.out.println("이미 동일한 정보로 등록된 책입니다.");
             return;
         }
         
         Book newBook = new Book(title, author, bookID);
         bookDB.save(newBook);
         newBook.display();
-        System.out.println("도서 '" + title + "' 등록이 완료되었습니다.");
+        System.out.println("'" + title + "' 등록이 완료되었습니다.");
     }
 
     /**
