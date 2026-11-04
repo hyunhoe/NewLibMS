@@ -31,6 +31,7 @@ public class User
     {
         System.out.println("학번 : " + stID);
         System.out.println("이름 : " + name);
+        System.out.println("대출중 " + loanCount + "/ 3");
     }
     
     /**
@@ -60,14 +61,6 @@ public class User
     public void increaseLoanCount()
     {
         loanCount++;
-    }
-
-    /**
-     * decreaseLoanCount - 대출 권수를 1 감소시키는 메소드
-     */
-    public void decreaseLoanCount()
-    {
-        loanCount--;
     }
 
     /**
