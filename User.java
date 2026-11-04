@@ -25,7 +25,7 @@ public class User
     }
 
     /**
-     * display - 이용자 학번과 이름 출력하는 메소드
+     * display - 이용자 학번, 이름, 대출 건수를 출력하는 메소드
      */
     public void display()
     {
@@ -82,5 +82,4 @@ public class User
     {
         return name;
     }
-
 }

@@ -60,5 +60,4 @@ public class UserDB
     {
         userDB.add(user);
     }
-
 }

@@ -18,7 +18,6 @@ public class Book
      * @param  title 제목
      * @param  author 저자
      * @param  bookID 책 등록번호
-     * @return    x 와 y의 합
      */
     public Book(String title, String author, String bookID)
     {
@@ -51,7 +50,7 @@ public class Book
     }
 
     /**
-     * borrow - 책을 대출하는 메소드
+     * linkLoan - 대출 상태를 나타내는 메소드
      *
      */
     public void linkLoan(Loan loan)
