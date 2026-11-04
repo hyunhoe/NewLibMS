@@ -12,7 +12,7 @@ public class LoanDB {
      * 대출 정보들을 담는 ArrayList<Loan> 컬렉션을 초기화
      */
     public LoanDB() {
-        this.loanDB = new ArrayList<Loan>();
+        loanDB = new ArrayList<Loan>();
     }
 
     /**
@@ -20,6 +20,6 @@ public class LoanDB {
      * @param loan - 새로 추가할 대출 객체(Loan)
      */
     public void save(Loan loan) {
-        this.loanDB.add(loan);
+        loanDB.add(loan);
     }
 }
