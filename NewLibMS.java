@@ -72,13 +72,19 @@ public class NewLibMS {
         Book book = bookDB.search(bookID);
         User user = userDB.search(stID);
         
-        if (book != null && user != null) {
-            book.display(); 
-            user.display();
-        } else {
-            System.out.println("책을 찾을 수 없음! 이용자를 찾을 수 없음!");
-            return; 
+        if(user == null){
+            System.out.println("이용자를 찾을 수 없음!");
+            return;
         }
+        else if(book == null){
+            System.out.println("책을 찾을 수 없음");
+            return;
+        }
+        else{
+            user.display();
+            book.display();
+        }
+        
         
         boolean resultBook = book.check();
         boolean resultUser = user.check();
