@@ -9,7 +9,6 @@ public class User
 {
     private String stID;
     private String name;
-    private int loanCount;
 
     /**
      * User 클래스의 객체 생성자
@@ -21,17 +20,15 @@ public class User
     {
         this.stID = stID;
         this.name = name;
-        this.loanCount = 0;
     }
 
     /**
-     * display - 이용자 학번과 이름 출력하는 메소드
+     * display - 이용자 학번과 이름을 출력하는 메소드
      */
     public void display()
     {
         System.out.println("학번 : " + stID);
         System.out.println("이름 : " + name);
-        System.out.println("대출중 " + loanCount + "/ 3");
     }
     
     /**
@@ -39,28 +36,10 @@ public class User
      *
      * @return    대출 권수가 3권 미만이면 true, 3권 이상이면 false
      */
-    public boolean check()
+    public boolean check(int loanCount)
     {
         boolean resultUser = loanCount < 3;
         return resultUser;
-    }
-
-    /**
-     * getLoanCount - 이용자의 현재 대출 권수 반환하는 메소드
-     *
-     * @return    현재 대출 권수
-     */
-    public int getLoanCount()
-    {
-        return loanCount;
-    }
-
-    /**
-     * increaseLoanCount - 대출 권수를 1 증가시키는 메소드
-     */
-    public void increaseLoanCount()
-    {
-        loanCount++;
     }
 
     /**
@@ -68,7 +47,7 @@ public class User
      *
      * @return    이용자의 학번
      */
-    public String getstID()
+    public String getStID()
     {
         return stID;
     }
@@ -78,9 +57,8 @@ public class User
      *
      * @return    이용자의 이름
      */
-    public String getname()
+    public String getName()
     {
         return name;
     }
-
 }

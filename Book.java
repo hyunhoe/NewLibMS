@@ -18,7 +18,6 @@ public class Book
      * @param  title 제목
      * @param  author 저자
      * @param  bookID 책 등록번호
-     * 
      */
     public Book(String title, String author, String bookID)
     {
@@ -35,8 +34,8 @@ public class Book
     public void display()
     {
         System.out.println("책 제목: " + title);
-        System.out.println("저자 : " + author);
-        System.out.println("책 ID: " + bookID);
+        System.out.println("저자: " + author);
+        System.out.println("등록번호: " + bookID);
     }
 
     /**
@@ -51,7 +50,7 @@ public class Book
     }
 
     /**
-     * borrow - 책을 대출하는 메소드
+     * linkLoan - 대출 상태를 나타내는 메소드
      *
      */
     public void linkLoan(Loan loan)
