@@ -1,4 +1,4 @@
-
+import java.util.*;
 /**
  * User 도서관 이용자의 정보를 관리하는 클래스
  *
@@ -10,6 +10,7 @@ public class User
     private String stID;
     private String name;
 
+    public ArrayList<Loan> loanData;
     /**
      * User 클래스의 객체 생성자
      * 
@@ -20,6 +21,7 @@ public class User
     {
         this.stID = stID;
         this.name = name;
+        loanData = new ArrayList<Loan>(3);
     }
 
     /**
@@ -34,13 +36,16 @@ public class User
     /**
      * check - 이용자의 대출 가능여부 확인하는 메소드
      *
-     * @param loanCount 대출 건수
      * @return 대출 건수가 3건 미만이면 true, 3건 이상이면 false
      */
-    public boolean check(int loanCount)
+    public boolean check()
     {
-        boolean resultUser = loanCount < 3;
-        return resultUser;
+        if(loanData.size() < 3){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 
     /**
