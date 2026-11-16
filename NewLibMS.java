@@ -110,7 +110,7 @@ public class NewLibMS {
             
             System.out.println(user.getName() + "님, 대출이 완료되었습니다.");
         }
-    }
+    }   
 
     /**
      * 대출 정보 파일 출력 기능
