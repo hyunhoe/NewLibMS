@@ -29,20 +29,4 @@ public class LoanDB
 
         loanDB.get(stID).add(loan);
     }
-
-    /**
-     * 대출 건수를 리턴하는 메소드
-     *
-     * @param stID 학번
-     * @return 대출 건수
-     */
-    public int getLoanCount(String stID)
-    {
-        if(loanDB.containsKey(stID) == false){
-            return 0;
-        }
-        
-        return loanDB.get(stID).size();
-    }
-
 }
