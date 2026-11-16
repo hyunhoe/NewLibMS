@@ -37,4 +37,14 @@ public class Loan
         System.out.println("대출일시: " + loanDate);
         System.out.println("반납기한: " + dueDate);
     }
+
+    /**
+     * getBorrower - 대출자(User) 객체를 반환하는 메소드
+     * 
+     * @return 대출자 User 객체
+     */
+    public User getBorrower()
+    {
+        return borrower;
+    }
 }
