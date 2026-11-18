@@ -47,24 +47,4 @@ public class User
             return false;
         }
     }
-
-    /**
-     * getStID - 이용자의 학번을 반환하는 메소드
-     *
-     * @return    이용자의 학번
-     */
-    public String getStID()
-    {
-        return stID;
-    }
-
-    /**
-     * getName - 이용자의 이름을 반환하는 메소드
-     *
-     * @return    이용자의 이름
-     */
-    public String getName()
-    {
-        return name;
-    }
 }
