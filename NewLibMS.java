@@ -30,7 +30,7 @@ public class NewLibMS {
      * @param name 이름
      */
     public void registerUser(String stID, String name) {
-        if (userDB.searchSameUser(stID, name) != null) {
+        if (userDB.search(stID) != null) {
             System.out.println("이미 동일한 정보로 등록된 이용자입니다.");
             return;
         }
@@ -49,7 +49,7 @@ public class NewLibMS {
      * @param bookID 책 등록번호
      */
     public void registerBook(String title, String author, String bookID) {
-        if (bookDB.searchSameBook(title, author, bookID) != null) {
+        if (bookDB.search(bookID) != null) {
             System.out.println("이미 동일한 정보로 등록된 책입니다.");
             return;
         }
