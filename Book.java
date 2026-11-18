@@ -48,14 +48,4 @@ public class Book
     {
         return linkedLoan == null;
     }
-
-    /**
-     * linkLoan - 대출객체와 링크하여 대출중인 상태로 만드는 메소드
-     *
-     * @param loan 대출객체
-     */
-    public void linkLoan(Loan loan)
-    {
-        this.linkedLoan = loan;
-    }
 }
