@@ -35,23 +35,6 @@ public class UserDB
     }
 
     /**
-     * searchSameUser - 학번과 이름이 동일한 이용자가 있는지 검색하는 메소드
-     *
-     * @param  stID  이용자의 학번
-     * @param  name  이용자의 이름
-     * @return    동일한 학번과 이름이 존재하면 user 반환, 없을 시 null 반환
-     */
-    public User searchSameUser(String stID, String name)
-    {
-        for (User user : userDB){
-            if(stID.equals(user.getStID()) && name.equals(user.getName())){
-                return user;
-            }
-        }
-        return null;
-    }
-
-    /**
      * save - 이용자 객체를 이용자DB에 저장하는 메소드
      *
      * @param  user  이용자 객체

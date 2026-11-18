@@ -35,26 +35,6 @@ public class BookDB
     }
 
     /**
-     * searchSameBook - 제목,저자,등록번호로 책을 검색하는 메소드
-     *
-     * @param  title 책 제목
-     * @param  author 저자
-     * @param  bookID 책 등록번호
-     * @return  검색한 책, 없으면 null
-     */
-    public Book searchSameBook(String title, String author, String bookID)
-    {
-        for(Book book : bookDB){
-            if(book.getTitle().equals(title) &&
-               book.getAuthor().equals(author) &&
-               book.getBookID().equals(bookID)){
-                   return book;
-               }
-        }
-        return null;
-    }
-
-    /**
      * save - 책을 목록에 저장하는 메소드
      *
      * @param  book 저장할 책
