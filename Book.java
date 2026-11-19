@@ -48,4 +48,6 @@ public class Book
     {
         return linkedLoan == null;
     }
+    
+    //테스트
 }
