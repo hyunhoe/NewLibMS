@@ -4,7 +4,7 @@ import java.util.*;
  * NewLibMS 도서관 관리 시스템의 메인 제어 클래스
  *
  * @author (2023320026_손상우)
- * @version (2026.11.16)
+ * @version (2026.11.23)
  */
 public class NewLibMS {
     private String name;
@@ -12,6 +12,10 @@ public class NewLibMS {
     private BookDB bookDB;
     private LoanDB loanDB;
 
+    /**
+     * NewLibMS 객체 생성자
+     * 시스템 시작 시 각 데이터베이스를 초기화합니다.
+     */
     public NewLibMS() {
         this.name = "NewLibMS System";
         this.userDB = new UserDB();
@@ -20,7 +24,43 @@ public class NewLibMS {
     }
 
     /**
-     * 도서 대출 기능 (시퀀스 다이어그램 기준)
+     * 신규 회원 가입 기능
+     * 
+     * @param stID 학번
+     * @param name 이름
+     */
+    public void registerUser(String stID, String name) {
+        if (userDB.search(stID) != null) {
+            System.out.println("이미 등록된 학번입니다.");
+            return;
+        }
+        User newUser = new User(stID, name);
+        userDB.save(newUser);
+        System.out.println(name + " 이용자가 성공적으로 등록되었습니다.");
+    }
+
+    /**
+     * 신규 책 등록 기능
+     * 
+     * @param title 책 제목
+     * @param author 저자
+     * @param bookID 책 등록번호
+     */
+    public void registerBook(String title, String author, String bookID) {
+        if (bookDB.search(bookID) != null) {
+            System.out.println("이미 등록된 도서 번호입니다.");
+            return;
+        }
+        Book newBook = new Book(title, author, bookID);
+        bookDB.save(newBook);
+        System.out.println("도서 '" + title + "' 등록이 완료되었습니다.");
+    }
+
+    /**
+     * 도서 대출 기능
+     * 
+     * @param stID 이용자 학번
+     * @param bookID 대출할 도서 등록번호
      */
     public void borrowBook(String stID, String bookID) {
         // 1. 책 및 이용자 검색
@@ -57,17 +97,16 @@ public class NewLibMS {
             System.out.println("책 대출가능! & 이용자 대출 가능!");
         }
 
-        // 5. 대출 객체 생성 및 연관관계 설정
+        // 5. 대출 객체 생성 
         Loan loan = new Loan(user, book);
-        user.addLoan(loan);
-        book.setLoan(loan);
 
-        // 6. 시퀀스 다이어그램 호출
-        User borrower = loan.getBorrower();
+        // 6. 대출 정보 출력 및 DB 저장
+        System.out.println("\n=== 대출 확인증 ===");
         loan.display();
         loanDB.save(loan);
 
-        // 7. 확인증 화면에 표시 (대출 정보와 대출 권수 화면에 표시)
-        System.out.println("현재 총 대출 권수: " + borrower.getLoanCount() + "권");
+        // 7.현재 대출 중인 권수 표시
+        System.out.println("현재 총 대출 권수: " + user.loanData.size() + "권");
+        System.out.println("===================");
     }
 }

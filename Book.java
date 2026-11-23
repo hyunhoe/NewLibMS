@@ -2,15 +2,22 @@
  * Book 책에 대한 클래스
  *
  * @author (2023320018_김현중)
- * @version (2026.11.16)
+ * @version (2026.11.23)
  */
-public class Book implements Comparable<Book>
+public class Book
 {
-    private String title;
-    private String author;
-    private String bookID;
-    private Loan loanData; // 클래스 다이어그램: Loan과 1:1 연관
+    String title;    // 책 제목
+    String author;   // 저자
+    String bookID;   // 책 등록번호
+    Loan loanData;   // 클래스 다이어그램: Loan과 1:1 연관
 
+    /**
+     * Book - 클래스의 객체 생성자
+     *
+     * @param title 제목
+     * @param author 저자
+     * @param bookID 책 등록번호
+     */
     public Book(String title, String author, String bookID)
     {
         this.title = title;
@@ -19,6 +26,9 @@ public class Book implements Comparable<Book>
         this.loanData = null;
     }
 
+    /**
+     * display - 책 정보를 화면에 출력하는 메소드
+     */
     public void display()
     {
         System.out.println("책 제목: " + title);
@@ -26,35 +36,14 @@ public class Book implements Comparable<Book>
         System.out.println("책 ID: " + bookID);
     }
 
+    /**
+     * check - 책의 대출 가능 여부를 확인하는 메소드
+     *
+     * @return 대출 가능하면 true, 대출 중이면 false
+     */
     public boolean check()
     {
         boolean resultBook = (loanData == null);
         return resultBook;
-    }
-
-    public void setLoan(Loan loan)
-    {
-        this.loanData = loan;
-    }
-
-    public String getTitle()
-    {
-        return title;
-    }
-
-    public String getAuthor()
-    {
-        return author;
-    }
-
-    public String getBookID()
-    {
-        return bookID;
-    }
-
-    @Override
-    public int compareTo(Book other)
-    {
-        return this.bookID.compareTo(other.bookID);
     }
 }
