@@ -109,4 +109,16 @@ public class NewLibMS {
         System.out.println("현재 총 대출 권수: " + user.loanData.size() + "권");
         System.out.println("===================");
     }
+
+    /**
+     * 메소드 예제 - 사용자에 맞게 주석을 바꾸십시오.
+     *
+     * @param  y  메소드의 샘플 파라미터
+     * @return    x 와 y의 합
+     */
+    public void returnBook(String bookID)
+    {
+        
+    }
+
 }
