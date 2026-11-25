@@ -8,10 +8,10 @@ import java.time.*;
  */
 public class Loan
 {
-    private LocalDate loanDate;   // 대출일시
-    private LocalDate dueDate;    // 반납기한 (대출일로부터 14일 뒤)
-    private User borrower;        // 대출자
-    private Book borrowedBook;    // 대출도서
+    LocalDate loanDate;   // 대출일시
+    LocalDate dueDate;    // 반납기한 (대출일로부터 14일 뒤)
+    User borrower;        // 대출자
+    Book borrowedBook;    // 대출도서
 
     /**
      * Loan 클래스의 객체 생성자

@@ -28,10 +28,14 @@ public class LoanDB {
      * @param  y  메소드의 샘플 파라미터
      * @return    x 와 y의 합
      */
-    public void findLoan(Book book)
+    public Loan findLoan(Book book)
     {
-        // 여기에 코드를 작성하세요
-        return y;
+        for(Loan loan : loanDB){
+            if(loan.borrowedBook == book){
+                return loan;
+            }
+        }
+        return null;
     }
 
     /**
@@ -42,8 +46,7 @@ public class LoanDB {
      */
     public void remove(Loan loan)
     {
-        // 여기에 코드를 작성하세요
-        return y;
+        loanDB.remove(loan);
     }
 
 }
