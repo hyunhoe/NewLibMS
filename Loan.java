@@ -12,7 +12,7 @@ public class Loan
     LocalDate dueDate;    // 반납기한 (대출일로부터 14일 뒤)
     User borrower;        // 대출자
     Book borrowedBook;    // 대출도서
-
+     
     /**
      * Loan 클래스의 객체 생성자
      * 
