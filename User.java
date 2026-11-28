@@ -8,9 +8,9 @@ import java.util.*;
  */
 public class User
 {
-    String stID; // 이용자 학번 (Student ID)
-    String name; // 이용자 이름
-    ArrayList<Loan> loanData; // 클래스 다이어그램: 0..3 ArrayList로 구현
+    private String stID; // private 
+    String name; 
+    ArrayList<Loan> loanData;
 
     /**
      * User 클래스의 객체 생성자
@@ -23,6 +23,14 @@ public class User
         this.stID = stID;
         this.name = name;
         this.loanData = new ArrayList<Loan>();
+    }
+
+    /**
+     * getStID - private 필드인 학번을 반환하는 메소드
+     */
+    public String getStID()
+    {
+        return stID;
     }
 
     /**

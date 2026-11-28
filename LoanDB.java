@@ -7,7 +7,7 @@ import java.util.*;
  * @version (2026.11.23)
  */
 public class LoanDB {
-    private ArrayList<Loan> loanDB; // 클래스 다이어그램: ArrayList로 구현
+    private ArrayList<Loan> loanDB; // ArrayList
 
     public LoanDB() {
         this.loanDB = new ArrayList<Loan>();

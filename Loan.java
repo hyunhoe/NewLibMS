@@ -26,7 +26,6 @@ public class Loan
         this.borrower = user;                       // 대출자 연결
         this.borrowedBook = book;                   // 대출도서 연결
         
-        // 양방향 연관관계 연결 (user의 loanData ArrayList에 현재 대출 추가)
         user.loanData.add(this);
         book.loanData = this;
     }

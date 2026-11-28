@@ -8,11 +8,11 @@ import java.util.*;
  */
 public class BookDB
 {
-    private TreeSet<Book> bookDB; // 클래스 다이어그램: TreeSet으로 구현
+    private TreeSet<Book> bookDB; // TreeSet
 
     public BookDB()
     {
-        bookDB = new TreeSet<Book>((b1, b2) -> b1.bookID.compareTo(b2.bookID));
+        bookDB = new TreeSet<Book>((b1, b2) -> b1.getBookID().compareTo(b2.getBookID()));
     }
 
     /**
@@ -24,7 +24,7 @@ public class BookDB
     public Book search(String bookID)
     {
         for(Book book : bookDB){
-            if(book.bookID.equals(bookID)){
+            if(book.getBookID().equals(bookID)){
                 return book;
             }
         }

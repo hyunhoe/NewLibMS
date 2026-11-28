@@ -6,10 +6,10 @@
  */
 public class Book
 {
-    String title;    // 책 제목
-    String author;   // 저자
-    String bookID;   // 책 등록번호
-    Loan loanData;   // 클래스 다이어그램: Loan과 1:1 연관
+    String title;            // 책 제목
+    String author;           // 저자
+    private String bookID;   // private
+    Loan loanData;           // Loan과 1:1 연관
 
     /**
      * Book - 클래스의 객체 생성자
@@ -24,6 +24,14 @@ public class Book
         this.author = author;
         this.bookID = bookID;
         this.loanData = null;
+    }
+
+    /**
+     * getBookID - private 필드인 책 등록번호를 반환하는 메소드
+     */
+    public String getBookID()
+    {
+        return bookID;
     }
 
     /**

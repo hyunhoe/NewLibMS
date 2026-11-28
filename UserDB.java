@@ -8,7 +8,7 @@ import java.util.*;
  */
 public class UserDB
 {
-    private ArrayList<User> userDB; // 클래스 다이어그램: ArrayList로 구현
+    private ArrayList<User> userDB; // ArrayList
 
     public UserDB()
     {
@@ -24,7 +24,7 @@ public class UserDB
     public User search(String stID)
     {
         for(User user : userDB){
-            if(stID.equals(user.stID)){
+            if(stID.equals(user.getStID())){
                 return user;
             }
         }
